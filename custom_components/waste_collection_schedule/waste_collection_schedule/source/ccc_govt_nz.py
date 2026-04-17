@@ -125,14 +125,15 @@ class Source:
             while collection_date < today and iterations < max_iterations:
                 collection_date += datetime.timedelta(weeks=interval_weeks)
                 iterations += 1
-                # Recheck overrides for the advanced date
-                date_str = collection_date.strftime("%Y-%m-%d")
-                for override in overrides:
-                    if override["OriginalDate"] == date_str:
-                        collection_date = datetime.datetime.strptime(
-                            override["NewDate"], "%Y-%m-%d"
-                        ).date()
-                        break
+
+            # Recheck overrides for the advanced date
+            date_str = collection_date.strftime("%Y-%m-%d")
+            for override in overrides:
+                if override["OriginalDate"] == date_str:
+                    collection_date = datetime.datetime.strptime(
+                        override["NewDate"], "%Y-%m-%d"
+                    ).date()
+                    break
 
             entries.append(
                 Collection(
