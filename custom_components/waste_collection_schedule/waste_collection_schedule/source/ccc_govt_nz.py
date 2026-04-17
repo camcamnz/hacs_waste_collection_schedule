@@ -120,7 +120,7 @@ class Source:
             # After each advance, recheck overrides so holiday/special-date
             # overrides are not missed for the corrected date.
             interval_weeks = 1 if bin["material"] == "Organic" else 2
-            max_iterations = 52  # safety limit
+            max_iterations = 208  # safety limit
             iterations = 0
             while collection_date < today and iterations < max_iterations:
                 collection_date += datetime.timedelta(weeks=interval_weeks)
